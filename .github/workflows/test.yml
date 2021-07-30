@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  [push]
+
+jobs:
+  API-Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install newman
+        run: npm install -g newman
+      - name: Run POSTMAN collection
+        run: npm run test-api
